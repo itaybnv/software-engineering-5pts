@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BarberShop.Properties
+namespace ClothingShop.Properties
 {
 
 

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarberShop.ViewModels
+namespace ClothingShop.ViewModels
 {
     class ShellViewModel : Screen
     {
