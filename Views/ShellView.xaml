@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberShop.Views"
         mc:Ignorable="d"
-        Height="450" Width="800">
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25.6" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25.6" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14.4" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="14.4" />
+        </Grid.RowDefinitions>
     </Grid>
 </Window>
