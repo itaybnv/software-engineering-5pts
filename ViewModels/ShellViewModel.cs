@@ -11,10 +11,16 @@ namespace ClothingShop.ViewModels
 {
     class ShellViewModel : Conductor<object>
     {
+        private dbEntities db;
+
+        public ShellViewModel()
+        {
+            db = new dbEntities();
+        }
 
         public void LoadEmployees()
         {
-            ActivateItem(new EmployeesViewModel());
+            ActivateItem(new EmployeesViewModel(db));
         }
     }
 }

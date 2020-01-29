@@ -25,5 +25,16 @@ namespace ClothingShop
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<customer> customer { get; set; }
+        public virtual DbSet<employee> employee { get; set; }
+        public virtual DbSet<employee_type> employee_type { get; set; }
+        public virtual DbSet<expense> expense { get; set; }
+        public virtual DbSet<inventory> inventory { get; set; }
+        public virtual DbSet<marchandise_supplier_order> marchandise_supplier_order { get; set; }
+        public virtual DbSet<merchandise> merchandise { get; set; }
+        public virtual DbSet<merchandise_category> merchandise_category { get; set; }
+        public virtual DbSet<order> order { get; set; }
+        public virtual DbSet<shift> shift { get; set; }
+        public virtual DbSet<supplier_order> supplier_order { get; set; }
     }
 }

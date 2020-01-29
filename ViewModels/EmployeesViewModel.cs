@@ -9,6 +9,20 @@ namespace ClothingShop.ViewModels
 {
     class EmployeesViewModel : Screen
     {
+        public dbEntities db { get; set; }
+        private List<employee> _employees;
 
+        public List<employee> Employees
+        {
+            get { return _employees; }
+            set { _employees = value; }
+        }
+
+
+        public EmployeesViewModel(dbEntities _db)
+        {
+            db = _db;
+            Employees = db.employee.ToList();
+        }
     }
 }

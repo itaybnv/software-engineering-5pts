@@ -4,20 +4,697 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="dbModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="email_address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="employee_type" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="date" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee_type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="salery" Type="float" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="expense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="employee" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="merchandise" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="marchandise_supplier_order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchandise" Type="int" Nullable="false" />
+          <Property Name="supplier_order" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="merchandise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
+          <Property Name="size" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="merchandise_category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clothing_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="targeted_customer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer" Type="int" Nullable="false" />
+          <Property Name="merchandise" Type="int" Nullable="false" />
+          <Property Name="paid_price" Type="float" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee" Type="int" Nullable="false" />
+          <Property Name="start_time" Type="datetime" Nullable="false" />
+          <Property Name="end_time" Type="datetime" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="supplier_order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="arrival_time" Type="datetime" Nullable="false" />
+          <Property Name="arrived" Type="bit" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_employee_Toemployee_type">
+          <End Role="employee_type" Type="Self.employee_type" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="employee_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expense_Toemployee">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="expense" Type="Self.expense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expense">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_Tomerchandise">
+          <End Role="merchandise" Type="Self.merchandise" Multiplicity="1" />
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="merchandise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_marchandise_supplier_order_Tomarchandise">
+          <End Role="merchandise" Type="Self.merchandise" Multiplicity="1" />
+          <End Role="marchandise_supplier_order" Type="Self.marchandise_supplier_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="marchandise_supplier_order">
+              <PropertyRef Name="merchandise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_marchandise_supplier_order_Tosupplier_order">
+          <End Role="supplier_order" Type="Self.supplier_order" Multiplicity="1" />
+          <End Role="marchandise_supplier_order" Type="Self.marchandise_supplier_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier_order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="marchandise_supplier_order">
+              <PropertyRef Name="supplier_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_merchandise_Tomerchandise_category">
+          <End Role="merchandise_category" Type="Self.merchandise_category" Multiplicity="1" />
+          <End Role="merchandise" Type="Self.merchandise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise_category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="merchandise">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_Tocustomers">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_Tomerchandise">
+          <End Role="merchandise" Type="Self.merchandise" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="merchandise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shift_Toemployee">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="shift" Type="Self.shift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="shift">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_type" EntityType="Self.employee_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="expense" EntityType="Self.expense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inventory" EntityType="Self.inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="marchandise_supplier_order" EntityType="Self.marchandise_supplier_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="merchandise" EntityType="Self.merchandise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="merchandise_category" EntityType="Self.merchandise_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shift" EntityType="Self.shift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="supplier_order" EntityType="Self.supplier_order" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_employee_Toemployee_type" Association="Self.FK_employee_Toemployee_type">
+            <End Role="employee_type" EntitySet="employee_type" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expense_Toemployee" Association="Self.FK_expense_Toemployee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="expense" EntitySet="expense" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_Tomerchandise" Association="Self.FK_inventory_Tomerchandise">
+            <End Role="merchandise" EntitySet="merchandise" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_marchandise_supplier_order_Tomarchandise" Association="Self.FK_marchandise_supplier_order_Tomarchandise">
+            <End Role="merchandise" EntitySet="merchandise" />
+            <End Role="marchandise_supplier_order" EntitySet="marchandise_supplier_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_marchandise_supplier_order_Tosupplier_order" Association="Self.FK_marchandise_supplier_order_Tosupplier_order">
+            <End Role="supplier_order" EntitySet="supplier_order" />
+            <End Role="marchandise_supplier_order" EntitySet="marchandise_supplier_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_merchandise_Tomerchandise_category" Association="Self.FK_merchandise_Tomerchandise_category">
+            <End Role="merchandise_category" EntitySet="merchandise_category" />
+            <End Role="merchandise" EntitySet="merchandise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_Tocustomers" Association="Self.FK_order_Tocustomers">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_Tomerchandise" Association="Self.FK_order_Tomerchandise">
+            <End Role="merchandise" EntitySet="merchandise" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shift_Toemployee" Association="Self.FK_shift_Toemployee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="shift" EntitySet="shift" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true" />
-      </Schema>
+        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="customer" EntityType="dbModel.customer" />
+          <EntitySet Name="employee" EntityType="dbModel.employee" />
+          <EntitySet Name="employee_type" EntityType="dbModel.employee_type" />
+          <EntitySet Name="expense" EntityType="dbModel.expense" />
+          <EntitySet Name="inventory" EntityType="dbModel.inventory" />
+          <EntitySet Name="marchandise_supplier_order" EntityType="dbModel.marchandise_supplier_order" />
+          <EntitySet Name="merchandise" EntityType="dbModel.merchandise" />
+          <EntitySet Name="merchandise_category" EntityType="dbModel.merchandise_category" />
+          <EntitySet Name="order" EntityType="dbModel.order" />
+          <EntitySet Name="shift" EntityType="dbModel.shift" />
+          <EntitySet Name="supplier_order" EntityType="dbModel.supplier_order" />
+          <AssociationSet Name="FK_order_Tocustomers" Association="dbModel.FK_order_Tocustomers">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_Toemployee_type" Association="dbModel.FK_employee_Toemployee_type">
+            <End Role="employee_type" EntitySet="employee_type" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expense_Toemployee" Association="dbModel.FK_expense_Toemployee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="expense" EntitySet="expense" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shift_Toemployee" Association="dbModel.FK_shift_Toemployee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="shift" EntitySet="shift" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_Tomerchandise" Association="dbModel.FK_inventory_Tomerchandise">
+            <End Role="merchandise" EntitySet="merchandise" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_marchandise_supplier_order_Tomarchandise" Association="dbModel.FK_marchandise_supplier_order_Tomarchandise">
+            <End Role="merchandise" EntitySet="merchandise" />
+            <End Role="marchandise_supplier_order" EntitySet="marchandise_supplier_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_marchandise_supplier_order_Tosupplier_order" Association="dbModel.FK_marchandise_supplier_order_Tosupplier_order">
+            <End Role="supplier_order" EntitySet="supplier_order" />
+            <End Role="marchandise_supplier_order" EntitySet="marchandise_supplier_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_merchandise_Tomerchandise_category" Association="dbModel.FK_merchandise_Tomerchandise_category">
+            <End Role="merchandise_category" EntitySet="merchandise_category" />
+            <End Role="merchandise" EntitySet="merchandise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_Tomerchandise" Association="dbModel.FK_order_Tomerchandise">
+            <End Role="merchandise" EntitySet="merchandise" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="dbModel.FK_order_Tocustomers" FromRole="customer" ToRole="order" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="email_address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="employee_type" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="employee_type1" Relationship="dbModel.FK_employee_Toemployee_type" FromRole="employee" ToRole="employee_type" />
+          <NavigationProperty Name="expense" Relationship="dbModel.FK_expense_Toemployee" FromRole="employee" ToRole="expense" />
+          <NavigationProperty Name="shift" Relationship="dbModel.FK_shift_Toemployee" FromRole="employee" ToRole="shift" />
+        </EntityType>
+        <EntityType Name="employee_type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="salery" Type="Double" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="dbModel.FK_employee_Toemployee_type" FromRole="employee_type" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="expense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="employee" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="employee1" Relationship="dbModel.FK_expense_Toemployee" FromRole="expense" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="merchandise" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="merchandise1" Relationship="dbModel.FK_inventory_Tomerchandise" FromRole="inventory" ToRole="merchandise" />
+        </EntityType>
+        <EntityType Name="marchandise_supplier_order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchandise" Type="Int32" Nullable="false" />
+          <Property Name="supplier_order" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="merchandise1" Relationship="dbModel.FK_marchandise_supplier_order_Tomarchandise" FromRole="marchandise_supplier_order" ToRole="merchandise" />
+          <NavigationProperty Name="supplier_order1" Relationship="dbModel.FK_marchandise_supplier_order_Tosupplier_order" FromRole="marchandise_supplier_order" ToRole="supplier_order" />
+        </EntityType>
+        <EntityType Name="merchandise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <Property Name="size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="inventory" Relationship="dbModel.FK_inventory_Tomerchandise" FromRole="merchandise" ToRole="inventory" />
+          <NavigationProperty Name="marchandise_supplier_order" Relationship="dbModel.FK_marchandise_supplier_order_Tomarchandise" FromRole="merchandise" ToRole="marchandise_supplier_order" />
+          <NavigationProperty Name="merchandise_category" Relationship="dbModel.FK_merchandise_Tomerchandise_category" FromRole="merchandise" ToRole="merchandise_category" />
+          <NavigationProperty Name="order" Relationship="dbModel.FK_order_Tomerchandise" FromRole="merchandise" ToRole="order" />
+        </EntityType>
+        <EntityType Name="merchandise_category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clothing_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="targeted_customer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="merchandise" Relationship="dbModel.FK_merchandise_Tomerchandise_category" FromRole="merchandise_category" ToRole="merchandise" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer" Type="Int32" Nullable="false" />
+          <Property Name="merchandise" Type="Int32" Nullable="false" />
+          <Property Name="paid_price" Type="Double" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="customer1" Relationship="dbModel.FK_order_Tocustomers" FromRole="order" ToRole="customer" />
+          <NavigationProperty Name="merchandise1" Relationship="dbModel.FK_order_Tomerchandise" FromRole="order" ToRole="merchandise" />
+        </EntityType>
+        <EntityType Name="shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee" Type="Int32" Nullable="false" />
+          <Property Name="start_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_time" Type="DateTime" Precision="3" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="employee1" Relationship="dbModel.FK_shift_Toemployee" FromRole="shift" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="supplier_order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="arrival_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="arrived" Type="Boolean" Nullable="false" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="marchandise_supplier_order" Relationship="dbModel.FK_marchandise_supplier_order_Tosupplier_order" FromRole="supplier_order" ToRole="marchandise_supplier_order" />
+        </EntityType>
+        <Association Name="FK_order_Tocustomers">
+          <End Type="dbModel.customer" Role="customer" Multiplicity="1" />
+          <End Type="dbModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_Toemployee_type">
+          <End Type="dbModel.employee_type" Role="employee_type" Multiplicity="1" />
+          <End Type="dbModel.employee" Role="employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="employee_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expense_Toemployee">
+          <End Type="dbModel.employee" Role="employee" Multiplicity="1" />
+          <End Type="dbModel.expense" Role="expense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expense">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shift_Toemployee">
+          <End Type="dbModel.employee" Role="employee" Multiplicity="1" />
+          <End Type="dbModel.shift" Role="shift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="shift">
+              <PropertyRef Name="employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_Tomerchandise">
+          <End Type="dbModel.merchandise" Role="merchandise" Multiplicity="1" />
+          <End Type="dbModel.inventory" Role="inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="merchandise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_marchandise_supplier_order_Tomarchandise">
+          <End Type="dbModel.merchandise" Role="merchandise" Multiplicity="1" />
+          <End Type="dbModel.marchandise_supplier_order" Role="marchandise_supplier_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="marchandise_supplier_order">
+              <PropertyRef Name="merchandise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_marchandise_supplier_order_Tosupplier_order">
+          <End Type="dbModel.supplier_order" Role="supplier_order" Multiplicity="1" />
+          <End Type="dbModel.marchandise_supplier_order" Role="marchandise_supplier_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier_order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="marchandise_supplier_order">
+              <PropertyRef Name="supplier_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_merchandise_Tomerchandise_category">
+          <End Type="dbModel.merchandise_category" Role="merchandise_category" Multiplicity="1" />
+          <End Type="dbModel.merchandise" Role="merchandise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise_category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="merchandise">
+              <PropertyRef Name="category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_Tomerchandise">
+          <End Type="dbModel.merchandise" Role="merchandise" Multiplicity="1" />
+          <End Type="dbModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchandise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="merchandise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbEntities" />
+        <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbEntities" >
+          <EntitySetMapping Name="customer">
+            <EntityTypeMapping TypeName="dbModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="dbModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="employee_type" ColumnName="employee_type" />
+                <ScalarProperty Name="email_address" ColumnName="email_address" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee_type">
+            <EntityTypeMapping TypeName="dbModel.employee_type">
+              <MappingFragment StoreEntitySet="employee_type">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="salery" ColumnName="salery" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="expense">
+            <EntityTypeMapping TypeName="dbModel.expense">
+              <MappingFragment StoreEntitySet="expense">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="employee" ColumnName="employee" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventory">
+            <EntityTypeMapping TypeName="dbModel.inventory">
+              <MappingFragment StoreEntitySet="inventory">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="merchandise" ColumnName="merchandise" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="marchandise_supplier_order">
+            <EntityTypeMapping TypeName="dbModel.marchandise_supplier_order">
+              <MappingFragment StoreEntitySet="marchandise_supplier_order">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="supplier_order" ColumnName="supplier_order" />
+                <ScalarProperty Name="merchandise" ColumnName="merchandise" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="merchandise">
+            <EntityTypeMapping TypeName="dbModel.merchandise">
+              <MappingFragment StoreEntitySet="merchandise">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="merchandise_category">
+            <EntityTypeMapping TypeName="dbModel.merchandise_category">
+              <MappingFragment StoreEntitySet="merchandise_category">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="targeted_customer" ColumnName="targeted_customer" />
+                <ScalarProperty Name="clothing_type" ColumnName="clothing_type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="dbModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="paid_price" ColumnName="paid_price" />
+                <ScalarProperty Name="merchandise" ColumnName="merchandise" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shift">
+            <EntityTypeMapping TypeName="dbModel.shift">
+              <MappingFragment StoreEntitySet="shift">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="employee" ColumnName="employee" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="supplier_order">
+            <EntityTypeMapping TypeName="dbModel.supplier_order">
+              <MappingFragment StoreEntitySet="supplier_order">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="arrived" ColumnName="arrived" />
+                <ScalarProperty Name="arrival_time" ColumnName="arrival_time" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -31,7 +708,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

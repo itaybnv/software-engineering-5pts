@@ -4,7 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a4ae79da85d84fe69c8d262586b71213" Name="Diagram1" />
+      <Diagram DiagramId="a4ae79da85d84fe69c8d262586b71213" Name="Diagram1" >
+        <EntityTypeShape EntityType="dbModel.customer" Width="1.5" PointX="6" PointY="1.75" />
+        <EntityTypeShape EntityType="dbModel.employee" Width="1.5" PointX="10" PointY="9.25" />
+        <EntityTypeShape EntityType="dbModel.employee_type" Width="1.5" PointX="7.75" PointY="9.875" />
+        <EntityTypeShape EntityType="dbModel.expense" Width="1.5" PointX="12.25" PointY="11.25" />
+        <EntityTypeShape EntityType="dbModel.inventory" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="dbModel.marchandise_supplier_order" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="dbModel.merchandise" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="dbModel.merchandise_category" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="dbModel.order" Width="1.5" PointX="8.25" PointY="4.5" />
+        <EntityTypeShape EntityType="dbModel.shift" Width="1.5" PointX="12.25" PointY="8.375" />
+        <EntityTypeShape EntityType="dbModel.supplier_order" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="dbModel.FK_order_Tocustomers" />
+        <AssociationConnector Association="dbModel.FK_employee_Toemployee_type" />
+        <AssociationConnector Association="dbModel.FK_expense_Toemployee" />
+        <AssociationConnector Association="dbModel.FK_shift_Toemployee" />
+        <AssociationConnector Association="dbModel.FK_inventory_Tomerchandise" />
+        <AssociationConnector Association="dbModel.FK_marchandise_supplier_order_Tomarchandise" />
+        <AssociationConnector Association="dbModel.FK_marchandise_supplier_order_Tosupplier_order" />
+        <AssociationConnector Association="dbModel.FK_merchandise_Tomerchandise_category" />
+        <AssociationConnector Association="dbModel.FK_order_Tomerchandise" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

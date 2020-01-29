@@ -7,6 +7,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="Employees" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Binding="{Binding first_name}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding last_name}" />
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding phone_number}" />
+                <DataGridTextColumn Header="Address" Binding="{Binding address}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding email_address}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding employee_type1.title}" />
+                <DataGridTextColumn Header="Started at" Binding="{Binding start_date}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
