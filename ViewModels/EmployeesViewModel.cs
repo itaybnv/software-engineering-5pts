@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using BarberShop.Views;
+using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,17 @@ namespace ClothingShop.ViewModels
         {
             db = _db;
             Employees = db.employee.ToList();
+        }
+
+        public void AddEmployee()
+        {
+            employee emp = new employee();
+            AddEmployee add = new AddEmployee();
+            emp.start_date = DateTime.Now;
+            add.DataContext = new { employee = emp, types = db.employee_type.ToList() };
+            add.ShowDialog();
+            db.employee.Add(emp);
+            db.SaveChanges();
         }
     }
 }
