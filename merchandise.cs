@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingShop
+namespace BarberShop
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace ClothingShop
     
         public int Id { get; set; }
         public string name { get; set; }
-        public int category { get; set; }
+        public int category_id { get; set; }
         public string size { get; set; }
         public double price { get; set; }
         public bool deleted { get; set; }

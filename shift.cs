@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingShop
+namespace BarberShop
 {
     using System;
     using System.Collections.Generic;
@@ -15,11 +15,11 @@ namespace ClothingShop
     public partial class shift
     {
         public int Id { get; set; }
-        public int employee { get; set; }
+        public int employee_id { get; set; }
         public System.DateTime start_time { get; set; }
         public Nullable<System.DateTime> end_time { get; set; }
         public bool deleted { get; set; }
     
-        public virtual employee employee1 { get; set; }
+        public virtual employee employee { get; set; }
     }
 }

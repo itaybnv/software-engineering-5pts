@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingShop
+namespace BarberShop
 {
     using System;
     using System.Collections.Generic;
@@ -15,13 +15,13 @@ namespace ClothingShop
     public partial class order
     {
         public int Id { get; set; }
-        public int customer { get; set; }
-        public int merchandise { get; set; }
+        public int customer_id { get; set; }
+        public int merchandise_id { get; set; }
         public double paid_price { get; set; }
         public string description { get; set; }
         public bool deleted { get; set; }
     
-        public virtual customer customer1 { get; set; }
-        public virtual merchandise merchandise1 { get; set; }
+        public virtual customer customer { get; set; }
+        public virtual merchandise merchandise { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingShop
+namespace BarberShop
 {
     using System;
     using System.Data.Entity;

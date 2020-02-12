@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClothingShop
+namespace BarberShop
 {
     using System;
     using System.Collections.Generic;
@@ -27,11 +27,11 @@ namespace ClothingShop
         public string phone_number { get; set; }
         public string address { get; set; }
         public string email_address { get; set; }
-        public int employee_type { get; set; }
+        public int employee_type_id { get; set; }
         public System.DateTime start_date { get; set; }
         public bool deleted { get; set; }
     
-        public virtual employee_type employee_type1 { get; set; }
+        public virtual employee_type employee_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<expense> expense { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
