@@ -22,7 +22,7 @@
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding phone_number}" />
                 <DataGridTextColumn Header="Address" Binding="{Binding address}" />
                 <DataGridTextColumn Header="Email" Binding="{Binding email_address}" />
-                <DataGridTextColumn Header="Type" Binding="{Binding employee_type1.title}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding employee_type.salery}" />
                 <DataGridTextColumn Header="Started at" Binding="{Binding start_date}" Width="*" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

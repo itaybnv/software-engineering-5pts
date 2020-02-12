@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BarberShop.Views
+namespace ClothingShop.Views
 {
     /// <summary>
     /// Interaction logic for AddEmployee.xaml
@@ -28,6 +28,7 @@ namespace BarberShop.Views
         private void submit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            
         }
     }
 }

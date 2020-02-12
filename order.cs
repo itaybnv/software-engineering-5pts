@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BarberShop
+namespace ClothingShop
 {
     using System;
     using System.Collections.Generic;

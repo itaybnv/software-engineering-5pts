@@ -1,9 +1,9 @@
-﻿<Window x:Class="BarberShop.Views.AddEmployee"
+﻿<Window x:Class="ClothingShop.Views.AddEmployee"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BarberShop.Views"
+        xmlns:local="clr-namespace:ClothingShop.Views"
         mc:Ignorable="d"
         Title="AddEmployee" Height="600" Width="400">
     <Grid>
@@ -42,7 +42,7 @@
         <Label Grid.Column="1" Grid.Row="8" FontSize="12">E-mail</Label>
         <TextBox Grid.Column="1" Grid.Row="9" FontSize="32" Text="{Binding employee.email_address}"></TextBox>
         <Label Grid.Column="1" Grid.Row="10" FontSize="12">Type</Label>
-        <ComboBox Grid.Column="1" Grid.Row="11" FontSize="32" ItemsSource="{Binding types}" DisplayMemberPath="title"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="11" FontSize="32" ItemsSource="{Binding types}" DisplayMemberPath="title" SelectedItem="{Binding employee.employee_type}"></ComboBox>
         <Label Grid.Column="1" Grid.Row="12" FontFamily="12">Starting date</Label>
         <DatePicker Grid.Column="1" Grid.Row="13" FontSize="32" SelectedDate="{Binding employee.start_date}">
             <DatePicker.Resources>

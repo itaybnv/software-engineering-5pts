@@ -1,4 +1,4 @@
-﻿using BarberShop.Views;
+﻿using ClothingShop.Views;
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,11 @@ namespace ClothingShop.ViewModels
         public List<employee> Employees
         {
             get { return _employees; }
-            set { _employees = value; }
+            set
+            {
+                _employees = value;
+                NotifyOfPropertyChange("Employees");
+            }
         }
 
 
@@ -30,11 +34,16 @@ namespace ClothingShop.ViewModels
         {
             employee emp = new employee();
             AddEmployee add = new AddEmployee();
+
             emp.start_date = DateTime.Now;
             add.DataContext = new { employee = emp, types = db.employee_type.ToList() };
             add.ShowDialog();
+
             db.employee.Add(emp);
             db.SaveChanges();
+
+            Employees = db.employee.ToList();
+
         }
     }
 }
