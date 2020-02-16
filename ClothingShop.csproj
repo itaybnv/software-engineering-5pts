@@ -101,7 +101,8 @@
     <Compile Include="customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataHandler.cs" />
+    <Compile Include="DataHandlers\DataHandler.cs" />
+    <Compile Include="DataHandlers\EmployeeDataHandler.cs" />
     <Compile Include="employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ClothingShop.ViewModels
 {
-    class EmployeesViewModel : Screen
+    class EmployeesViewModel : Screen, INotifyPropertyChanged
     {
-        public dbEntities db { get; set; }
+        public DataHandlers.EmployeeDataHandler dataHandler = new DataHandlers.EmployeeDataHandler();
         private List<employee> _employees;
 
         public List<employee> Employees
@@ -24,25 +25,23 @@ namespace ClothingShop.ViewModels
         }
 
 
-        public EmployeesViewModel(dbEntities _db)
+        public EmployeesViewModel()
         {
-            db = _db;
-            Employees = db.employee.ToList();
+            Employees = dataHandler.GetData();
         }
 
         public void AddEmployee()
         {
             employee emp = new employee();
-            AddEmployee add = new AddEmployee();
+            AddEmployee addWindow = new AddEmployee();
 
             emp.start_date = DateTime.Now;
-            add.DataContext = new { employee = emp, types = db.employee_type.ToList() };
-            add.ShowDialog();
+            addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList() };
+            addWindow.ShowDialog();
 
-            db.employee.Add(emp);
-            db.SaveChanges();
-
-            Employees = db.employee.ToList();
+            System.Diagnostics.Debug.WriteLine("test");
+            dataHandler.AddData(emp);
+            Employees = dataHandler.GetData();
 
         }
     }

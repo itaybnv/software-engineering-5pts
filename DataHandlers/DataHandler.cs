@@ -33,12 +33,18 @@ namespace ClothingShop
             if (VerifyItem(item))
             {
                 // Add item to database
-                db.Set<T>().ToList().Add(item);
+                db.Set<T>().Add(item);
 
                 // Save the database
                 db.SaveChanges();
+                System.Diagnostics.Debug.WriteLine("added");
             }
 
+        }
+
+        public dbEntities GetEntities()
+        {
+            return db;
         }
 
         protected abstract bool VerifyItem(T item);
