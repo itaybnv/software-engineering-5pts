@@ -11,11 +11,16 @@ namespace ClothingShop.ViewModels
 {
     class ShellViewModel : Conductor<object>
     {
-        
-
-        public void LoadEmployees()
+        public Dictionary<string, Screen> ViewsDict { get; set; } = new Dictionary<string, Screen>
         {
-            ActivateItem(new EmployeesViewModel());
+            { "Employees", new EmployeesViewModel() }
+        };
+
+        public void ActivateView(string viewModelName)
+        {
+            DisplayName = $"Clothing Shop {viewModelName}";
+
+            ActivateItem(ViewsDict[viewModelName]);
         }
     }
 }

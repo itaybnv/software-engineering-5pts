@@ -30,7 +30,6 @@ namespace ClothingShop.ViewModels
             addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList() };
             addWindow.ShowDialog();
 
-            System.Diagnostics.Debug.WriteLine("test");
             dataHandler.AddData(emp);
             Employees = dataHandler.GetData();
 
