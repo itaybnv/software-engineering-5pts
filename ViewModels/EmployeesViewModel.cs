@@ -12,17 +12,8 @@ namespace ClothingShop.ViewModels
     class EmployeesViewModel : Screen, INotifyPropertyChanged
     {
         public DataHandlers.EmployeeDataHandler dataHandler = new DataHandlers.EmployeeDataHandler();
-        private List<employee> _employees;
 
-        public List<employee> Employees
-        {
-            get { return _employees; }
-            set
-            {
-                _employees = value;
-                NotifyOfPropertyChange("Employees");
-            }
-        }
+        public List<employee> Employees { get; set; }
 
 
         public EmployeesViewModel()

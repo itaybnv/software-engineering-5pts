@@ -11,6 +11,8 @@ namespace ClothingShop.ViewModels
 {
     class ShellViewModel : Conductor<object>
     {
+        
+
         public void LoadEmployees()
         {
             ActivateItem(new EmployeesViewModel());
