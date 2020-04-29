@@ -27,8 +27,7 @@ namespace ClothingShop.Views
 
         private void submit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            
+            this.DialogResult = true;            
         }
     }
 }

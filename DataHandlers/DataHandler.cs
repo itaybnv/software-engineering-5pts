@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,18 @@ namespace ClothingShop
 {
     abstract class DataHandler<T> where T : class
     {
-        protected dbEntities db = new dbEntities();
+        static protected dbEntities db = new dbEntities();
 
-        public virtual List<T> GetData()
+        public virtual List<T> GetData(bool hideDeleted)
         {
-            return db.Set<T>().ToList();
+            if (hideDeleted)
+            {
+                return db.Set<T>().ToList().FindAll(o => !(bool)(typeof(T).GetProperty("deleted").GetValue(o)));
+            }
+            else
+            {
+                return db.Set<T>().ToList();
+            }
         }
 
         public virtual void RemoveData(T item)
@@ -27,17 +35,16 @@ namespace ClothingShop
             db.SaveChanges();
         }
 
-        public virtual void AddData(T item)
+        public virtual void AddOrUpdate(T item)
         {
             // If item is verified, add to database
             if (VerifyItem(item))
             {
                 // Add item to database
-                db.Set<T>().Add(item);
+                db.Set<T>().AddOrUpdate(item);
 
                 // Save the database
                 db.SaveChanges();
-                System.Diagnostics.Debug.WriteLine("added");
             }
 
         }
