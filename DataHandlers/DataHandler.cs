@@ -37,14 +37,19 @@ namespace ClothingShop
 
         public virtual void AddOrUpdate(T item)
         {
-            // If item is verified, add to database
-            if (VerifyItem(item))
+            try
             {
+                VerifyItem(item);
+
                 // Add item to database
                 db.Set<T>().AddOrUpdate(item);
 
                 // Save the database
                 db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
 
         }
@@ -54,6 +59,6 @@ namespace ClothingShop
             return db;
         }
 
-        protected abstract bool VerifyItem(T item);
+        protected abstract void VerifyItem(T item);
     }
 }

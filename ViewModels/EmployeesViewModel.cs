@@ -27,7 +27,14 @@ namespace ClothingShop.ViewModels
             addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList() };
             addWindow.ShowDialog();
 
-            dataHandler.AddOrUpdate(emp);
+            try
+            {
+                dataHandler.AddOrUpdate(emp);
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show("Error: " + e.Message);
+            }
             NotifyOfPropertyChange("Employees");
 
         }
@@ -45,7 +52,13 @@ namespace ClothingShop.ViewModels
             addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList() };
             if (addWindow.ShowDialog() == true)
             {
-                dataHandler.AddOrUpdate(emp); 
+                try
+                {
+                    dataHandler.AddOrUpdate(emp);
+                } catch (Exception e)
+                {
+                    System.Windows.MessageBox.Show("Error: " + e.Message);
+                }
             }
             else
             {

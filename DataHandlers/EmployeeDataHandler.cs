@@ -23,9 +23,25 @@ namespace ClothingShop.DataHandlers
             return phoneRegex.IsMatch(phone);
         }
 
-        protected override bool VerifyItem(employee item)
+        protected override void VerifyItem(employee item)
         {
-            return VerifyName(item.first_name) && VerifyName(item.last_name) && VerifyPhone(item.phone_number) && VerifyName(item.address);
+            if(!VerifyName(item.first_name))
+            {
+                throw new Exception("First name incorrect");
+            }
+            else if (!VerifyName(item.last_name))
+            {
+                throw new Exception("Last name incorrect");
+            }
+            else if (!VerifyPhone(item.phone_number))
+            {
+                throw new Exception("Phone number incorrect");
+            }
+            else if (!VerifyName(item.address))
+            {
+                throw new Exception("Address incorrect");
+            }
+            
         }
     }
 }
