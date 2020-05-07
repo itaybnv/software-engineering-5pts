@@ -24,7 +24,9 @@ namespace ClothingShop.ViewModels
             AddEmployee addWindow = new AddEmployee();
 
             emp.start_date = DateTime.Now;
-            addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList() };
+            
+            // Sets the window's context and gives it the types available, that aren't deleted
+            addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList().FindAll(type => { return !type.deleted; }) };
             addWindow.ShowDialog();
 
             try
@@ -49,7 +51,8 @@ namespace ClothingShop.ViewModels
         {
             AddEmployee addWindow = new AddEmployee();
 
-            addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList() };
+            // Sets the window's context and gives it the types available, that aren't deleted
+            addWindow.DataContext = new { employee = emp, types = dataHandler.GetEntities().employee_type.ToList().FindAll(type => { return !type.deleted; }) };
             if (addWindow.ShowDialog() == true)
             {
                 try

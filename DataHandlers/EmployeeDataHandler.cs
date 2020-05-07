@@ -9,7 +9,7 @@ namespace ClothingShop.DataHandlers
 {
     class EmployeeDataHandler : DataHandler<employee>
     {
-        private bool VerifyName(string name)
+        private bool VerifyString(string name)
         {
             Regex nameRegex = new Regex(@"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$");
 
@@ -25,11 +25,11 @@ namespace ClothingShop.DataHandlers
 
         protected override void VerifyItem(employee item)
         {
-            if(!VerifyName(item.first_name))
+            if(!VerifyString(item.first_name))
             {
                 throw new Exception("First name incorrect");
             }
-            else if (!VerifyName(item.last_name))
+            else if (!VerifyString(item.last_name))
             {
                 throw new Exception("Last name incorrect");
             }
@@ -37,7 +37,7 @@ namespace ClothingShop.DataHandlers
             {
                 throw new Exception("Phone number incorrect");
             }
-            else if (!VerifyName(item.address))
+            else if (!VerifyString(item.address))
             {
                 throw new Exception("Address incorrect");
             }

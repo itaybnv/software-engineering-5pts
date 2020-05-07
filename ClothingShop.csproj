@@ -109,7 +109,7 @@
     </Compile>
     <Compile Include="DataHandlers\DataHandler.cs" />
     <Compile Include="DataHandlers\EmployeeDataHandler.cs" />
-    <Compile Include="DataHandlers\EmployeeTypeDataHandler.cs" />
+    <Compile Include="DataHandlers\EmployeeTypesDataHandler.cs" />
     <Compile Include="employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -157,12 +157,19 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\EmployeesViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeTypesViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddEmployeeType.xaml.cs">
+      <DependentUpon>AddEmployeeType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeesView.xaml.cs">
       <DependentUpon>EmployeesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeTypesView.xaml.cs">
+      <DependentUpon>EmployeeTypesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -209,7 +216,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddEmployeeType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EmployeesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeTypesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

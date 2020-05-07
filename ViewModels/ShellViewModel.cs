@@ -13,7 +13,8 @@ namespace ClothingShop.ViewModels
     {
         public Dictionary<string, Screen> ViewsDict { get; set; } = new Dictionary<string, Screen>
         {
-            { "Employees", new EmployeesViewModel() }
+            { "Employees", new EmployeesViewModel() },
+            { "EmployeeTypes", new EmployeeTypesViewModel() }
         };
 
         public void ActivateView(string viewModelName)
