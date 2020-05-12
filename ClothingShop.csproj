@@ -126,6 +126,7 @@
     <Compile Include="DataHandlers\EmployeeDataHandler.cs" />
     <Compile Include="DataHandlers\EmployeeTypesDataHandler.cs" />
     <Compile Include="DataHandlers\MerchandiseCategoryDataHandler.cs" />
+    <Compile Include="DataHandlers\MerchandiseDataHandler.cs" />
     <Compile Include="DataHandlers\ShiftDataHandler.cs" />
     <Compile Include="employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -176,6 +177,7 @@
     <Compile Include="ViewModels\EmployeesViewModel.cs" />
     <Compile Include="ViewModels\EmployeeTypesViewModel.cs" />
     <Compile Include="ViewModels\MerchandiseCategoriesViewModel.cs" />
+    <Compile Include="ViewModels\MerchandiseViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ShiftsViewModel.cs" />
     <Compile Include="Views\AddEmployee.xaml.cs">
@@ -183,6 +185,9 @@
     </Compile>
     <Compile Include="Views\AddEmployeeType.xaml.cs">
       <DependentUpon>AddEmployeeType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddMerchandise.xaml.cs">
+      <DependentUpon>AddMerchandise.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddMerchandiseCategory.xaml.cs">
       <DependentUpon>AddMerchandiseCategory.xaml</DependentUpon>
@@ -198,6 +203,9 @@
     </Compile>
     <Compile Include="Views\MerchandiseCategoriesView.xaml.cs">
       <DependentUpon>MerchandiseCategoriesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MerchandiseView.xaml.cs">
+      <DependentUpon>MerchandiseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -251,6 +259,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddMerchandise.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddMerchandiseCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -268,6 +280,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MerchandiseCategoriesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MerchandiseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
