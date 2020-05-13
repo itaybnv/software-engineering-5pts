@@ -24,7 +24,7 @@
         <DataGrid x:Name="MerchandiseCategories" Grid.Row="0" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" Binding="{Binding clothing_type}" />
-                <DataGridTextColumn Header="Targeted Customer" Binding="{Binding targeted_customer}" />
+                <DataGridTextColumn Header="Targeted Customer" Binding="{Binding targeted_customer}" Width="*"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -26,7 +26,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding title}" />
                 <DataGridTextColumn Header="Salery" Binding="{Binding salery}" />
-                <DataGridTextColumn Header="Description" Binding="{Binding description}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding description}" Width="*"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

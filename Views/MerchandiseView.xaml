@@ -27,7 +27,7 @@
                 <DataGridTextColumn Header="Clothing Type" Binding="{Binding merchandise_category.clothing_type}" />
                 <DataGridTextColumn Header="Targeted Customer" Binding="{Binding merchandise_category.targeted_customer}" />
                 <DataGridTextColumn Header="Size" Binding="{Binding size}" />
-                <DataGridTextColumn Header="Price" Binding="{Binding price}" />
+                <DataGridTextColumn Header="Price" Binding="{Binding price}" Width="*"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
