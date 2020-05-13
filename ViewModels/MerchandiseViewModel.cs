@@ -20,7 +20,6 @@ namespace ClothingShop.ViewModels
         {
             merchandise merch = new merchandise();
             AddMerchandise addWindow = new AddMerchandise();
-
             // Sets the window's context and gives it the types available, that aren't deleted
             addWindow.DataContext = new { merch, merchCategories = dataHandler.GetEntities().merchandise_category.ToList().FindAll(type => { return !type.deleted; }) };
             addWindow.ShowDialog();

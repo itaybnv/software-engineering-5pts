@@ -34,11 +34,11 @@
         <Label Grid.Column="1" Grid.Row="0" FontSize="12">Name</Label>
         <TextBox Grid.Column="1" Grid.Row="1" FontSize="32" Text="{Binding merch.name}"></TextBox>
         <Label Grid.Column="1" Grid.Row="2" FontSize="12">Size</Label>
-        <TextBox Grid.Column="1" Grid.Row="3" FontSize="32" Text="{Binding merch.Size}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="3" FontSize="32" Text="{Binding merch.size}"></TextBox>
         <Label Grid.Column="1" Grid.Row="4" FontSize="12">Price</Label>
-        <TextBox Grid.Column="1" Grid.Row="5" FontSize="32" Text="{Binding merch.Price}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="5" FontSize="32" Text="{Binding merch.price}"></TextBox>
         <Label Grid.Column="1" Grid.Row="6" FontSize="12">Category</Label>
-        <ComboBox Grid.Column="1" Grid.Row="7" FontSize="32" ItemsSource="{Binding merchCategories}" SelectedItem="{Binding merch.merch_category}">
+        <ComboBox Grid.Column="1" Grid.Row="7" FontSize="32" ItemsSource="{Binding merchCategories}" SelectedItem="{Binding merch.merchandise_category}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>

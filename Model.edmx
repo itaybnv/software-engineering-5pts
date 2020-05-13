@@ -43,6 +43,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="cost" Type="float" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="date" Type="datetime" Nullable="false" />
           <Property Name="employee_id" Type="int" Nullable="false" />
@@ -375,6 +376,7 @@
           <Property Name="employee_id" Type="Int32" Nullable="false" />
           <Property Name="deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="employee" Relationship="dbModel.FK_expense_Toemployee" FromRole="expense" ToRole="employee" />
+          <Property Name="cost" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="inventory">
           <Key>
@@ -610,6 +612,7 @@
           <EntitySetMapping Name="expense">
             <EntityTypeMapping TypeName="dbModel.expense">
               <MappingFragment StoreEntitySet="expense">
+                <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="deleted" ColumnName="deleted" />
                 <ScalarProperty Name="employee_id" ColumnName="employee_id" />
                 <ScalarProperty Name="date" ColumnName="date" />

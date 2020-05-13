@@ -32,7 +32,28 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="1" Grid.Row="0" FontSize="12">Employee</Label>
-        <ComboBox Grid.Column="1" Grid.Row="1" FontSize="32" ItemsSource="{Binding employees}" DisplayMemberPath="first_name" SelectedItem="{Binding shift.employee}"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="1" FontSize="32" ItemsSource="{Binding employees}" SelectedItem="{Binding shift.employee}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding first_name}" />
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text=" " />
+                        <TextBlock Grid.Column="2" Grid.Row="0" Margin="5 0" Text="{Binding last_name}" />
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Grid.Column="1" Grid.Row="2" FontSize="12">Start Time</Label>
         <DatePicker Grid.Column="1" Grid.Row="3" FontSize="32" SelectedDate="{Binding shift.start_time}">
             <DatePicker.Resources>

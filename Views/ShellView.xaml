@@ -16,6 +16,7 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="25.6" />
         </Grid.ColumnDefinitions>
@@ -32,6 +33,7 @@
         <Button cal:Message.Attach="ActivateView('Shifts')" Grid.Column="3" Grid.Row="1" Margin="5 0" Padding="5">Shifts</Button>
         <Button cal:Message.Attach="ActivateView('Merchandise')" Grid.Column="4" Grid.Row="1" Margin="5 0" Padding="5">Merchandise</Button>
         <Button cal:Message.Attach="ActivateView('MerchandiseCategories')" Grid.Column="5" Grid.Row="1" Margin="5 0" Padding="5">Merchandise Categories</Button>
+        <Button cal:Message.Attach="ActivateView('Expenses')" Grid.Column="6" Grid.Row="1" Margin="5 0" Padding="5">Expenses</Button>
         <!-- Shell Child -->
-        <ContentControl x:Name="ActiveItem" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="6"></ContentControl>
+        <ContentControl x:Name="ActiveItem" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7"></ContentControl>
     </Grid> </Window>

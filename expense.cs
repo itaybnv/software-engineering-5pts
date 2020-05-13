@@ -19,6 +19,7 @@ namespace ClothingShop
         public System.DateTime date { get; set; }
         public int employee_id { get; set; }
         public bool deleted { get; set; }
+        public double cost { get; set; }
     
         public virtual employee employee { get; set; }
     }

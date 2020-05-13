@@ -19,13 +19,11 @@ namespace ClothingShop.ViewModels
 
         public void AddEmployeeType()
         {
-            Debug.WriteLine("1");
             employee_type empType = new employee_type();
             AddEmployeeType addWindow = new AddEmployeeType();
 
             addWindow.DataContext = new { employeeType = empType };
             addWindow.ShowDialog();
-            Debug.WriteLine("2");
             try
             {
                 dataHandler.AddOrUpdate(empType);
