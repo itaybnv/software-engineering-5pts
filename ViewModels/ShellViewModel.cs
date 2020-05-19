@@ -18,7 +18,8 @@ namespace ClothingShop.ViewModels
             { "Shifts", new ShiftsViewModel() },
             { "MerchandiseCategories", new MerchandiseCategoriesViewModel() },
             { "Merchandise", new MerchandiseViewModel() },
-            { "Expenses", new ExpenseViewModel() }
+            { "Expenses", new ExpenseViewModel() },
+            { "Customers", new CustomerViewModel() }
         };
 
         public void ActivateView(string viewModelName)
