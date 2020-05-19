@@ -127,6 +127,7 @@
     <Compile Include="DataHandlers\EmployeeDataHandler.cs" />
     <Compile Include="DataHandlers\EmployeeTypesDataHandler.cs" />
     <Compile Include="DataHandlers\ExpenseDataHandler.cs" />
+    <Compile Include="DataHandlers\InventoryDataHandler.cs" />
     <Compile Include="DataHandlers\MerchandiseCategoryDataHandler.cs" />
     <Compile Include="DataHandlers\MerchandiseDataHandler.cs" />
     <Compile Include="DataHandlers\ShiftDataHandler.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="ViewModels\EmployeesViewModel.cs" />
     <Compile Include="ViewModels\EmployeeTypesViewModel.cs" />
     <Compile Include="ViewModels\ExpenseViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViewModel.cs" />
     <Compile Include="ViewModels\MerchandiseCategoriesViewModel.cs" />
     <Compile Include="ViewModels\MerchandiseViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
@@ -195,6 +197,9 @@
     </Compile>
     <Compile Include="Views\AddExpense.xaml.cs">
       <DependentUpon>AddExpense.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddInventory.xaml.cs">
+      <DependentUpon>AddInventory.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddMerchandise.xaml.cs">
       <DependentUpon>AddMerchandise.xaml</DependentUpon>
@@ -216,6 +221,9 @@
     </Compile>
     <Compile Include="Views\ExpenseView.xaml.cs">
       <DependentUpon>ExpenseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InventoryView.xaml.cs">
+      <DependentUpon>InventoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MerchandiseCategoriesView.xaml.cs">
       <DependentUpon>MerchandiseCategoriesView.xaml</DependentUpon>
@@ -283,6 +291,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddInventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddMerchandise.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -308,6 +320,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ExpenseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InventoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
