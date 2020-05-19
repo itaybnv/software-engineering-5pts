@@ -20,7 +20,8 @@ namespace ClothingShop.ViewModels
             { "Merchandise", new MerchandiseViewModel() },
             { "Expenses", new ExpenseViewModel() },
             { "Customers", new CustomerViewModel() },
-            { "Inventory", new InventoryViewModel() }
+            { "Inventory", new InventoryViewModel() },
+            { "Orders", new OrderViewModel() }
         };
 
         public void ActivateView(string viewModelName)
