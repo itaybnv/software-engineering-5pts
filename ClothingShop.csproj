@@ -285,7 +285,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Doc\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AddCustomer.xaml">
       <SubType>Designer</SubType>
@@ -370,10 +372,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="db.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="db_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>db.mdf</DependentUpon>
     </Content>
     <Resource Include="FodyWeavers.xml" />
