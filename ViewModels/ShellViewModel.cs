@@ -32,7 +32,7 @@ namespace ClothingShop.ViewModels
 
         public void ActivateView(string viewModelName)
         {
-            DisplayName = $"Clothing Shop {viewModelName}";
+            DisplayName = $"Clothing Shop - {viewModelName}";
 
             ActivateItem(ViewsDict[viewModelName]);
         }

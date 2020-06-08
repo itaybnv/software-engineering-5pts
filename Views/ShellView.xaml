@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ClothingShop.Views"
         mc:Ignorable="d"
         FontSize="20"
-        Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen" Title="Clothing Shop - Homepage">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25.6" />
