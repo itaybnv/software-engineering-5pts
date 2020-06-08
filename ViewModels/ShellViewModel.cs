@@ -21,8 +21,14 @@ namespace ClothingShop.ViewModels
             { "Expenses", new ExpenseViewModel() },
             { "Customers", new CustomerViewModel() },
             { "Inventory", new InventoryViewModel() },
-            { "Orders", new OrderViewModel() }
+            { "Orders", new OrderViewModel() },
+            { "HomePage", new HomePageViewModel() }
         };
+
+        public ShellViewModel()
+        {
+            ActivateItem(ViewsDict["HomePage"]);
+        }
 
         public void ActivateView(string viewModelName)
         {
