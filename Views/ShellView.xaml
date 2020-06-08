@@ -33,11 +33,11 @@
         <!-- Navigation Buttons -->
         <Button cal:Message.Attach="ActivateView('Employees')" Grid.Column="1" Grid.Row="1" Margin="5 0" Padding="5">Employees</Button>
         <Button cal:Message.Attach="ActivateView('EmployeeTypes')" Grid.Column="2" Grid.Row="1" Margin="5 0" Padding="5">Employee Types</Button>
-        <Button cal:Message.Attach="ActivateView('Shifts')" Grid.Column="3" Grid.Row="1" Margin="5 0" Padding="5">Shifts</Button>
-        <Button cal:Message.Attach="ActivateView('Merchandise')" Grid.Column="4" Grid.Row="1" Margin="5 0" Padding="5">Merchandise</Button>
-        <Button cal:Message.Attach="ActivateView('MerchandiseCategories')" Grid.Column="5" Grid.Row="1" Margin="5 0" Padding="5">Merchandise Categories</Button>
-        <Button cal:Message.Attach="ActivateView('Expenses')" Grid.Column="6" Grid.Row="1" Margin="5 0" Padding="5">Expenses</Button>
-        <Button cal:Message.Attach="ActivateView('Customers')" Grid.Column="7" Grid.Row="1" Margin="5 0" Padding="5">Customers</Button>
+        <Button cal:Message.Attach="ActivateView('Shifts')" Grid.Column="3" Grid.Row="1" Margin="5 0 30 0" Padding="5">Shifts</Button>
+        <Button cal:Message.Attach="ActivateView('Customers')" Grid.Column="4" Grid.Row="1" Margin="5 0" Padding="5">Customers</Button>
+        <Button cal:Message.Attach="ActivateView('Merchandise')" Grid.Column="5" Grid.Row="1" Margin="5 0" Padding="5">Merchandise</Button>
+        <Button cal:Message.Attach="ActivateView('MerchandiseCategories')" Grid.Column="6" Grid.Row="1" Margin="5 0 30 0" Padding="5">Merchandise Categories</Button>
+        <Button cal:Message.Attach="ActivateView('Expenses')" Grid.Column="7" Grid.Row="1" Margin="5 0" Padding="5">Expenses</Button>
         <Button cal:Message.Attach="ActivateView('Inventory')" Grid.Column="8" Grid.Row="1" Margin="5 0" Padding="5">Inventory</Button>
         <Button cal:Message.Attach="ActivateView('Orders')" Grid.Column="9" Grid.Row="1" Margin="5 0" Padding="5">Order</Button>
         <!-- Shell Child -->
