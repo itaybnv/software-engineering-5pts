@@ -378,38 +378,6 @@
       <DependentUpon>db.mdf</DependentUpon>
     </Content>
     <Resource Include="FodyWeavers.xml" />
-    <Resource Include="Doc\media\image1.png" />
-    <Resource Include="Doc\media\image10.png" />
-    <Resource Include="Doc\media\image11.png" />
-    <Resource Include="Doc\media\image12.png" />
-    <Resource Include="Doc\media\image13.png" />
-    <Resource Include="Doc\media\image14.png" />
-    <Resource Include="Doc\media\image15.png" />
-    <Resource Include="Doc\media\image16.png" />
-    <Resource Include="Doc\media\image17.png" />
-    <Resource Include="Doc\media\image18.png" />
-    <Resource Include="Doc\media\image19.png" />
-    <Resource Include="Doc\media\image2.png" />
-    <Resource Include="Doc\media\image20.png" />
-    <Content Include="Doc\media\image21.emf" />
-    <Resource Include="Doc\media\image22.png" />
-    <Resource Include="Doc\media\image23.png" />
-    <Resource Include="Doc\media\image24.png" />
-    <Resource Include="Doc\media\image25.png" />
-    <Resource Include="Doc\media\image26.png" />
-    <Resource Include="Doc\media\image27.png" />
-    <Resource Include="Doc\media\image28.png" />
-    <Resource Include="Doc\media\image29.png" />
-    <Resource Include="Doc\media\image3.png" />
-    <Resource Include="Doc\media\image30.png" />
-    <Resource Include="Doc\media\image31.png" />
-    <Resource Include="Doc\media\image32.png" />
-    <Resource Include="Doc\media\image4.png" />
-    <Resource Include="Doc\media\image5.png" />
-    <Resource Include="Doc\media\image6.png" />
-    <Resource Include="Doc\media\image7.png" />
-    <Resource Include="Doc\media\image8.png" />
-    <Resource Include="Doc\media\image9.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
