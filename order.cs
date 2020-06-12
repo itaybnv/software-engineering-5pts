@@ -18,6 +18,7 @@ namespace ClothingShop
         public int customer_id { get; set; }
         public int merchandise_id { get; set; }
         public int employee_id { get; set; }
+        public double discount { get; set; }
         public double paid_price { get; set; }
         public System.DateTime date { get; set; }
         public bool deleted { get; set; }

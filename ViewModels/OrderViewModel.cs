@@ -34,7 +34,7 @@ namespace ClothingShop.ViewModels
             order.date = DateTime.Now;
 
             // Sets the window's context and gives it the types available, that aren't deleted
-            addWindow.DataContext = new { order, customers = dataHandler.GetEntities().customer.ToList().FindAll(type => { return !type.deleted; }), merchandise = dataHandler.GetEntities().merchandise.ToList().FindAll(type => { return !type.deleted; }), employees = dataHandler.GetEntities().employee.ToList().FindAll(type => { return !type.deleted; }) };
+            addWindow.DataContext = new { order, customers = dataHandler.GetEntities().customer.ToList().FindAll(type => { return !type.deleted; }), merchandise = dataHandler.GetEntities().merchandise.ToList().FindAll(type => { return !type.deleted && (dataHandler.GetEntities().inventory.Select(v=> v.merchandise_id).Contains(type.Id)); }), employees = dataHandler.GetEntities().employee.ToList().FindAll(type => { return !type.deleted; }) };
             addWindow.ShowDialog();
             try
             {
@@ -50,6 +50,8 @@ namespace ClothingShop.ViewModels
 
                         dataHandler.GetEntities().SaveChanges();
                         NotifyOfPropertyChange("Inventory");
+
+                        order.paid_price = ((100 - order.discount) / 100) * order.merchandise.price;
                         break;
                     }
                 }

@@ -96,6 +96,7 @@
           <Property Name="customer_id" Type="int" Nullable="false" />
           <Property Name="merchandise_id" Type="int" Nullable="false" />
           <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="discount" Type="float" Nullable="false" />
           <Property Name="paid_price" Type="float" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
           <Property Name="deleted" Type="bit" Nullable="false" />
@@ -455,6 +456,7 @@
           <Property Name="customer_id" Type="Int32" Nullable="false" />
           <Property Name="merchandise_id" Type="Int32" Nullable="false" />
           <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="discount" Type="Double" Nullable="false" />
           <Property Name="paid_price" Type="Double" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="deleted" Type="Boolean" Nullable="false" />
@@ -703,10 +705,11 @@
           <EntitySetMapping Name="order">
             <EntityTypeMapping TypeName="dbModel.order">
               <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="paid_price" ColumnName="paid_price" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="employee_id" ColumnName="employee_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="deleted" ColumnName="deleted" />
-                <ScalarProperty Name="paid_price" ColumnName="paid_price" />
                 <ScalarProperty Name="merchandise_id" ColumnName="merchandise_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

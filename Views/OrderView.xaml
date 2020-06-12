@@ -21,16 +21,17 @@
             <ColumnDefinition Width="269*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="385*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="Orders" Grid.Row="0" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="5">
+        <DataGrid x:Name="Orders" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="4">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Customer first name" Binding="{Binding customer.firstname}" />
-                <DataGridTextColumn Header="Customer last name" Binding="{Binding customer.lastname}" />
-                <DataGridTextColumn Header="Employee first name" Binding="{Binding employee.first_name}" />
-                <DataGridTextColumn Header="Employee last name" Binding="{Binding employee.last_name}" />
+                <DataGridTextColumn Header="first name" Binding="{Binding customer.firstname}" />
+                <DataGridTextColumn Header="last name" Binding="{Binding customer.lastname}" />
+                <DataGridTextColumn Header="first name" Binding="{Binding employee.first_name}" />
+                <DataGridTextColumn Header="last name" Binding="{Binding employee.last_name}" />
                 <DataGridTextColumn Header="Merchandise" Binding="{Binding merchandise.name}" />
                 <DataGridTextColumn Header="Paid Price" Binding="{Binding paid_price}" Width="*" />
                 <DataGridTemplateColumn>
@@ -67,10 +68,12 @@
             </DataGrid.CellStyle>
         </DataGrid>
 
-        <Button x:Name="AddOrder" Grid.Row="1" MaxWidth="100" Grid.Column="3">Add</Button>
-        <CheckBox IsChecked="{Binding HideDeleted}" Grid.Row="1" Grid.Column="4">Hide Deleted</CheckBox>
-        <DatePicker x:Name="LowDate" Margin="2" Grid.Row="1"/>
-        <DatePicker x:Name="HighDate" Margin="2" Grid.Column="2" Grid.Row="1"/>
-        <Label Content="------" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="AddOrder" Grid.Row="2" MaxWidth="100" Grid.Column="3">Add</Button>
+        <CheckBox IsChecked="{Binding HideDeleted}" Grid.Row="2" Grid.Column="4">Hide Deleted</CheckBox>
+        <DatePicker x:Name="LowDate" Margin="2" Grid.Row="2"/>
+        <DatePicker x:Name="HighDate" Margin="2" Grid.Column="2" Grid.Row="2"/>
+        <Label Content="------" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Customer" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Content="Employee" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
     </Grid>
 </UserControl>
