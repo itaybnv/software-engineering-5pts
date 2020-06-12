@@ -94,7 +94,7 @@
                     <lvc:Axis Title="Employees" Labels="{Binding EmployeeNames}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
                 <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Total sold"></lvc:Axis>
+                    <lvc:Axis MinValue="0" Title="Total sold"></lvc:Axis>
                 </lvc:CartesianChart.AxisY>
             </lvc:CartesianChart>
         </Grid>
