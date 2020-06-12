@@ -96,7 +96,7 @@
           <Property Name="customer_id" Type="int" Nullable="false" />
           <Property Name="merchandise_id" Type="int" Nullable="false" />
           <Property Name="paid_price" Type="float" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="date" Type="datetime" Nullable="false" />
           <Property Name="deleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="shift">
@@ -433,7 +433,7 @@
           <Property Name="customer_id" Type="Int32" Nullable="false" />
           <Property Name="merchandise_id" Type="Int32" Nullable="false" />
           <Property Name="paid_price" Type="Double" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="customer" Relationship="dbModel.FK_order_Tocustomers" FromRole="order" ToRole="customer" />
           <NavigationProperty Name="merchandise" Relationship="dbModel.FK_order_Tomerchandise" FromRole="order" ToRole="merchandise" />
@@ -667,8 +667,8 @@
           <EntitySetMapping Name="order">
             <EntityTypeMapping TypeName="dbModel.order">
               <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="deleted" ColumnName="deleted" />
-                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="paid_price" ColumnName="paid_price" />
                 <ScalarProperty Name="merchandise_id" ColumnName="merchandise_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
