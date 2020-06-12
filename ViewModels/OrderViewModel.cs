@@ -1,5 +1,8 @@
 ﻿using Caliburn.Micro;
 using ClothingShop.Views;
+using LiveCharts;
+using LiveCharts.Helpers;
+using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,17 +17,13 @@ namespace ClothingShop.ViewModels
     {
         public DataHandlers.OrderDataHandler dataHandler = new DataHandlers.OrderDataHandler();
 
-        public List<order> Orders
-        {
-            get
-            {
-                return dataHandler.GetData(HideDeleted).Where(v => v.date >= LowDate && v.date <= HighDate).ToList();
-            }
-
-        }
+        public List<order> Orders => dataHandler.GetData(HideDeleted).Where(v => v.date >= LowDate && v.date <= HighDate).ToList();
         public bool HideDeleted { get; set; } = true;
         public DateTime LowDate { get; set; } = DateTime.Now.AddDays(-1);
         public DateTime HighDate { get; set; } = DateTime.Now.AddDays(1);
+        public string TotalEarning => Orders.Aggregate<order, double>(0, (a, v) => { return a + v.paid_price; }).ToString();
+        public List<string> EmployeeNames => dataHandler.GetEntities().employee.Select(v => v.first_name + " " + v.last_name).ToList();
+        public SeriesCollection SeriesCollection => new SeriesCollection { new ColumnSeries { Title = "date range", Values = GetChartValues() } };
 
         public void AddOrder()
         {
@@ -34,7 +33,7 @@ namespace ClothingShop.ViewModels
             order.date = DateTime.Now;
 
             // Sets the window's context and gives it the types available, that aren't deleted
-            addWindow.DataContext = new { order, customers = dataHandler.GetEntities().customer.ToList().FindAll(type => { return !type.deleted; }), merchandise = dataHandler.GetEntities().merchandise.ToList().FindAll(type => { return !type.deleted && (dataHandler.GetEntities().inventory.Select(v=> v.merchandise_id).Contains(type.Id)); }), employees = dataHandler.GetEntities().employee.ToList().FindAll(type => { return !type.deleted; }) };
+            addWindow.DataContext = new { order, customers = dataHandler.GetEntities().customer.ToList().FindAll(type => { return !type.deleted; }), merchandise = dataHandler.GetEntities().merchandise.ToList().FindAll(type => { return !type.deleted && (dataHandler.GetEntities().inventory.Select(v => v.merchandise_id).Contains(type.Id)); }), employees = dataHandler.GetEntities().employee.ToList().FindAll(type => { return !type.deleted; }) };
             addWindow.ShowDialog();
             try
             {
@@ -44,19 +43,19 @@ namespace ClothingShop.ViewModels
                 List<inventory> invList = dataHandler.GetEntities().inventory.ToList();
                 foreach (inventory inv in invList)
                 {
-                    if(inv.merchandise_id == order.merchandise_id)
+                    if (inv.merchandise_id == order.merchandise_id)
                     {
                         inv.quantity -= 1;
+                        order.paid_price = ((100 - order.discount) / 100) * order.merchandise.price;
 
                         dataHandler.GetEntities().SaveChanges();
                         NotifyOfPropertyChange("Inventory");
 
-                        order.paid_price = ((100 - order.discount) / 100) * order.merchandise.price;
                         break;
                     }
                 }
 
-                
+
             }
             catch (Exception e)
             {
@@ -70,6 +69,13 @@ namespace ClothingShop.ViewModels
         {
             dataHandler.RemoveData(obj);
             NotifyOfPropertyChange("Orders");
+        }
+
+        private ChartValues<double> GetChartValues()
+        {
+            List<employee> employees = dataHandler.GetEntities().employee.ToList();
+
+            return employees.Select(v => Orders.Aggregate<order, double>(0, (a, c) => c.employee_id == v.Id ? a + c.paid_price : a)).AsChartValues();
         }
     }
 }
