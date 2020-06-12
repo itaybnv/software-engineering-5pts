@@ -17,11 +17,13 @@ namespace ClothingShop
         public int Id { get; set; }
         public int customer_id { get; set; }
         public int merchandise_id { get; set; }
+        public int employee_id { get; set; }
         public double paid_price { get; set; }
         public System.DateTime date { get; set; }
         public bool deleted { get; set; }
     
         public virtual customer customer { get; set; }
         public virtual merchandise merchandise { get; set; }
+        public virtual employee employee { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace ClothingShop.ViewModels
             order.date = DateTime.Now;
 
             // Sets the window's context and gives it the types available, that aren't deleted
-            addWindow.DataContext = new { order, customers = dataHandler.GetEntities().customer.ToList().FindAll(type => { return !type.deleted; }), merchandise = dataHandler.GetEntities().merchandise.ToList().FindAll(type => { return !type.deleted; }) };
+            addWindow.DataContext = new { order, customers = dataHandler.GetEntities().customer.ToList().FindAll(type => { return !type.deleted; }), merchandise = dataHandler.GetEntities().merchandise.ToList().FindAll(type => { return !type.deleted; }), employees = dataHandler.GetEntities().employee.ToList().FindAll(type => { return !type.deleted; }) };
             addWindow.ShowDialog();
             try
             {

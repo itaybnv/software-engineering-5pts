@@ -19,6 +19,7 @@ namespace ClothingShop
         {
             this.expense = new HashSet<expense>();
             this.shift = new HashSet<shift>();
+            this.order = new HashSet<order>();
         }
     
         public int Id { get; set; }
@@ -36,5 +37,7 @@ namespace ClothingShop
         public virtual ICollection<expense> expense { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<shift> shift { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order> order { get; set; }
     }
 }

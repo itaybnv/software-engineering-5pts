@@ -29,9 +29,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Customer first name" Binding="{Binding customer.firstname}" />
                 <DataGridTextColumn Header="Customer last name" Binding="{Binding customer.lastname}" />
+                <DataGridTextColumn Header="Employee first name" Binding="{Binding employee.first_name}" />
+                <DataGridTextColumn Header="Employee last name" Binding="{Binding employee.last_name}" />
                 <DataGridTextColumn Header="Merchandise" Binding="{Binding merchandise.name}" />
-                <DataGridTextColumn Header="Paid Price" Binding="{Binding paid_price}" />
-                <DataGridTextColumn Header="Description" Binding="{Binding description}" Width="*"/>
+                <DataGridTextColumn Header="Paid Price" Binding="{Binding paid_price}" Width="*" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -95,6 +95,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customer_id" Type="int" Nullable="false" />
           <Property Name="merchandise_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
           <Property Name="paid_price" Type="float" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
           <Property Name="deleted" Type="bit" Nullable="false" />
@@ -202,6 +203,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_order_ToEmployees">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_order_Tomerchandise">
           <End Role="merchandise" Type="Self.merchandise" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
@@ -266,6 +279,10 @@
             <End Role="customer" EntitySet="customer" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
+          <AssociationSet Name="FK_order_ToEmployees" Association="Self.FK_order_ToEmployees">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
           <AssociationSet Name="FK_order_Tomerchandise" Association="Self.FK_order_Tomerchandise">
             <End Role="merchandise" EntitySet="merchandise" />
             <End Role="order" EntitySet="order" />
@@ -327,6 +344,10 @@
             <End Role="merchandise" EntitySet="merchandise" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
+          <AssociationSet Name="FK_order_ToEmployees" Association="dbModel.FK_order_ToEmployees">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="customer">
           <Key>
@@ -354,6 +375,7 @@
           <NavigationProperty Name="employee_type" Relationship="dbModel.FK_employee_Toemployee_type" FromRole="employee" ToRole="employee_type" />
           <NavigationProperty Name="expense" Relationship="dbModel.FK_expense_Toemployee" FromRole="employee" ToRole="expense" />
           <NavigationProperty Name="shift" Relationship="dbModel.FK_shift_Toemployee" FromRole="employee" ToRole="shift" />
+          <NavigationProperty Name="order" Relationship="dbModel.FK_order_ToEmployees" FromRole="employee" ToRole="order" />
         </EntityType>
         <EntityType Name="employee_type">
           <Key>
@@ -432,11 +454,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="customer_id" Type="Int32" Nullable="false" />
           <Property Name="merchandise_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
           <Property Name="paid_price" Type="Double" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="customer" Relationship="dbModel.FK_order_Tocustomers" FromRole="order" ToRole="customer" />
           <NavigationProperty Name="merchandise" Relationship="dbModel.FK_order_Tomerchandise" FromRole="order" ToRole="merchandise" />
+          <NavigationProperty Name="employee" Relationship="dbModel.FK_order_ToEmployees" FromRole="order" ToRole="employee" />
         </EntityType>
         <EntityType Name="shift">
           <Key>
@@ -567,6 +591,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_order_ToEmployees">
+          <End Type="dbModel.employee" Role="employee" Multiplicity="1" />
+          <End Type="dbModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -667,6 +703,7 @@
           <EntitySetMapping Name="order">
             <EntityTypeMapping TypeName="dbModel.order">
               <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="deleted" ColumnName="deleted" />
                 <ScalarProperty Name="paid_price" ColumnName="paid_price" />
